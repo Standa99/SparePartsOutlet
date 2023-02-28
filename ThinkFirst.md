@@ -1,6 +1,6 @@
-##User Management
+## User Management
 
-###Goals of this topic
+### Goals of this topic
     - user managment was genrally contribution of my classmate Tom during project at GFA, thats why I would like to make everything on my own from zero to hero
     - how to hash password to DB
     - JWT authentication
@@ -9,7 +9,7 @@
     Optinal:
     - customize chat for users to learn more about SignalR framework
     
-###User managment requirments:
+### User managment requirments:
     - user should login
     - user have role
     - JWT token authentication
@@ -19,17 +19,20 @@
     - user password is hashed in DB
     - the user behaves according to the relevant role
     
-###User Role Description
-    ####admin 
+### User Role Description
+
+#### admin 
     - only one admin in whole app
     - can do everything, because of admin 
-    ####boss 
+    
+#### boss 
     - multiple bosses avaible
     - can fill the Outlet with incoming parts or material
     - can make new order
     - can create new technician (user in role Technician)
     - can create new inventory request
-    ####technician
+    
+####technician
     - multible technician avaible
     - can take out material from outlet 
     - can NOT increase amount of part in outlet
