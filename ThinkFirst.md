@@ -1,4 +1,4 @@
-## User Management
+## Step 1. User Management
 
 ### Goals of this topic
 - user managment was genrally contribution of my classmate Tom during project at GFA, thats why I would like to make everything on my own from zero to hero
@@ -37,4 +37,7 @@ Optinal:
 - can take out material from outlet 
 - can NOT increase amount of part in outlet
 - the material that the technician has packed can be kept with him  in the warehouse
+
+## Step 2. Database Management
+- during the work on user management, I will place here ideas and suggestions for the business logic of the outlet
              
