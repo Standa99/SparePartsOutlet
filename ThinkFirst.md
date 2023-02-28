@@ -18,6 +18,7 @@ Optinal:
 - able to get his profile page
 - user password is hashed in DB
 - the user behaves according to the relevant role
+- forgetten passoword via email request
     
 ### User Role Description
 
