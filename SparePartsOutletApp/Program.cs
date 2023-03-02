@@ -17,10 +17,7 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
-<<<<<<< HEAD
-=======
 
->>>>>>> user-JWT-implemetation
     options.TokenValidationParameters = new TokenValidationParameters
     {
         ValidateIssuer = true,
@@ -43,10 +40,9 @@ builder.Services.AddScoped<ISeedData, SeedData>();
 builder.Services.AddScoped<IUserManagementService, UserManagementService>();
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
-<<<<<<< HEAD
-=======
+
 builder.Services.AddHttpContextAccessor();
->>>>>>> user-JWT-implemetation
+
 
 
 var app = builder.Build();
