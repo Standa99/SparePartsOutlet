@@ -1,5 +1,7 @@
-﻿using SparePartsOutletApp.Models.Entities;
+﻿using SparePartsOutletApp.Context.SeedData._Interfaces;
+using SparePartsOutletApp.Models.Entities;
 using SparePartsOutletApp.Services;
+using SparePartsOutletApp.Services._Interfaces;
 
 namespace SparePartsOutletApp.Context.SeedData
 {

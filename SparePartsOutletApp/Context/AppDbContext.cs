@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SparePartsOutletApp.Context.SeedData;
+using SparePartsOutletApp.Context.SeedData._Interfaces;
 using SparePartsOutletApp.Models.Entities;
 
 namespace SparePartsOutletApp.Context
