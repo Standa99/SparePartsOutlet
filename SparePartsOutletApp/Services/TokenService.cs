@@ -25,7 +25,7 @@ namespace SparePartsOutletApp.Services
             var claims = new List<Claim>
             {
             new Claim(JwtRegisteredClaimNames.NameId, user.Id.ToString()),
-            new Claim("userRole", user.RoleName),
+            new Claim(ClaimTypes.Role, user.RoleName),
             };
 
             var expiration = DateTime.Now.AddDays(1);

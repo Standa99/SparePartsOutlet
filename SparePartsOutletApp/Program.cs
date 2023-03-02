@@ -17,6 +17,7 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
+
     options.TokenValidationParameters = new TokenValidationParameters
     {
         ValidateIssuer = true,
@@ -34,11 +35,12 @@ var connectionStringDev = builder.Configuration["ConnectionStrings:Development"]
 builder.Services.AddDbContext<AppDbContext>(options =>
             options.UseSqlServer(connectionStringDev));
 
-builder.Services.AddScoped<AppDbContext>();
+//builder.Services.AddScoped<AppDbContext>();
 builder.Services.AddScoped<ISeedData, SeedData>();
 builder.Services.AddScoped<IUserManagementService, UserManagementService>();
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddHttpContextAccessor();
 
 
 var app = builder.Build();
@@ -49,6 +51,9 @@ var app = builder.Build();
 
 app.UseStaticFiles();
 app.UseRouting();
+app.UseAuthentication();
+
+app.UseAuthorization();
 app.MapControllers();
 
 app.Run();

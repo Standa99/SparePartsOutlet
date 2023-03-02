@@ -1,6 +1,5 @@
 ﻿using SparePartsOutletApp.Context.SeedData._Interfaces;
 using SparePartsOutletApp.Models.Entities;
-using SparePartsOutletApp.Services;
 using SparePartsOutletApp.Services._Interfaces;
 
 namespace SparePartsOutletApp.Context.SeedData
@@ -8,32 +7,25 @@ namespace SparePartsOutletApp.Context.SeedData
     public class SeedData : ISeedData
     {
         private readonly IConfiguration _configuration;
-        private readonly IUserManagementService _userManagementService;
 
-        public SeedData(
-            IConfiguration configuration, 
-            IUserManagementService userManagementService
-            )
+        public SeedData(IConfiguration configuration)
         {
             _configuration = configuration;
-            _userManagementService = userManagementService;
         }
 
         public User SeedAdmin()
         {
-            
-
             var admin = new User()
             {
                 Id = _configuration.GetValue<int>("UserAdmin:Id"),
                 UserName = _configuration.GetValue<string>("UserAdmin:UserName"),
                 UserEmail = _configuration.GetValue<string>("UserAdmin:UserEmail"),
-                PasswordHashed = _userManagementService.HashPassword(_configuration.GetValue<string>("UserAdmin:Password")),
+                PasswordHashed = BCrypt
+                        .Net
+                        .BCrypt
+                        .EnhancedHashPassword(_configuration.GetValue<string>("UserAdmin:Password"), hashType: BCrypt.Net.HashType.SHA384),
                 RoleName = _configuration.GetValue<string>("UserAdmin:RoleName"),
             };
-
-            
-
 
             return admin;
         }

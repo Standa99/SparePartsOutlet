@@ -8,16 +8,22 @@ namespace SparePartsOutletApp.Controllers
     public class UserManagementController : Controller
     {
         private readonly IUserManagementService _userManagementService;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public UserManagementController(IUserManagementService userManagementService)
+        public UserManagementController(IUserManagementService userManagementService, IHttpContextAccessor httpContextAccessor)
         {
             _userManagementService = userManagementService;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         [HttpPost("login")]
-        public IActionResult Login(UserLoginRequest userLoginRequest)
+        public IActionResult Login([FromBody]UserLoginRequest userLoginRequest)
         {
             var response = _userManagementService.Login(userLoginRequest);
+
+            //HttpContext.Session.SetString("JwtToken", response.AuthenticationToken);
+
+            TempData["JwtToken"] = response.AuthenticationToken;
 
             return Ok(response);
         }

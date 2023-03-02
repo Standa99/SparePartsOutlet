@@ -11,9 +11,10 @@ namespace SparePartsOutletApp.Services
         private readonly IUserRepository _userRepo;
         private readonly ITokenService _tokenService;
 
-        public UserManagementService(IUserRepository userRepository)
+        public UserManagementService(IUserRepository userRepository, ITokenService tokenService)
         {
             _userRepo = userRepository;
+            _tokenService = tokenService;
         }
 
         public string HashPassword(string password)
@@ -30,20 +31,22 @@ namespace SparePartsOutletApp.Services
         {
             var user = _userRepo.GetUserByName(userLoginRequest.UserName);
 
-            if(user != null)
+            if (user != null)
             {
-                if(VerifyPassword(userLoginRequest.Password,user.PasswordHashed))
+                if (VerifyPassword(userLoginRequest.Password, user.PasswordHashed))
                 {
+                    var token = _tokenService.GenerateLoginToken(user);
+
                     var response = new UserLoginResponse()
                     {
                         AuthenticationToken = _tokenService.GenerateLoginToken(user)
                     };
                     return response;
-                }    
+                }
             }
-            
+
             return new UserLoginResponse();
-            
+
         }
     }
 }
